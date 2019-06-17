@@ -18,7 +18,7 @@ builder.register('F')
 const container = builder.build();
 const lazy = container.resolve('F', 0, 1)();
 
-const data = [...Array(10).keys()].reduce((acc) => {
+const data = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].reduce((acc) => {
     acc.result.push(acc.lazy.value);
     acc.lazy = acc.lazy.next;
     return acc;
