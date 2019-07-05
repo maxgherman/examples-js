@@ -1,16 +1,15 @@
-const Addons = require('typeioc/addons');
-const Interceptors = Addons.Interceptors;
+const { interceptor: createInterceptor, callInfo } = require('typeioc');
 
-const interceptor = Interceptors.create();
+const interceptor = createInterceptor();
 
 const math = interceptor.intercept(Math, [{
     	wrapper: (callInfo) => callInfo.next(`${callInfo.result} 2`)
     }, {
         method: 'pow',
-        type: Interceptors.CallInfoType.Method,
+        type: callInfo.method,
         wrapper : (callInfo) => callInfo.next(callInfo.args[0] + callInfo.args[1])
     }, {
-        type: Interceptors.CallInfoType.Method,
+        type: callInfo.method,
         wrapper : (callInfo) => `${callInfo.result} 3`
     }, {
         method: 'pow',

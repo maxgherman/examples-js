@@ -1,6 +1,6 @@
 const typeioc = require('typeioc');
 
-const builder = typeioc.createBuilder();
+const builder = typeioc.builder();
 
 class A {
     constructor(b){}

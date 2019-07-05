@@ -29,14 +29,14 @@ class CClass extends CClassBase {
           this.p1 = p1;
           this.p2 = p2;
           this.p3 = p3;
-    } // these parameters will be pased as part of factory resoluion
+    } // these parameters will be passed as part of factory resolution
 
     get name() {
         return `C ${this.p1} ${this.p2} ${this.p3}`;
     }
 }
 
-const builder = typeioc.createBuilder();
+const builder = typeioc.builder();
 builder.register('A Class')
     .as(() => new AClass());
 

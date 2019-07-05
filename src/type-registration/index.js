@@ -28,7 +28,7 @@ C.prototype.name = function() {
     return `${this._a.name} ${this._b.name} ${this._name}`;
 }
 
-const builder = typeioc.createBuilder();
+const builder = typeioc.builder();
 builder.register(ABase).asType(A);
 builder.register('B').asType(B);
 builder.register(C).asType(C, ABase, 'B');

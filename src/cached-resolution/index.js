@@ -8,7 +8,7 @@ class B {
     get name() { return 'B'; }
 }
 
-const builder = typeioc.createBuilder();
+const builder = typeioc.builder();
 builder.register('A')
     .as(()=> new A());
 builder.register('B')
@@ -35,9 +35,9 @@ const c1 = container
     .cache()
     .exec();
 
-const a2 = container.cache.a1;
-const b2 = container.cache.b1;
-const c2 = container.cache.C;
+const a2 = container.cache.instance.a1;
+const b2 = container.cache.instance.b1;
+const c2 = container.cache.resolve('C');
 
 const result = `${a1.name} ${b1.name} ${c1.name} ${a2.name} ${b2.name} ${c2.name}`;
 

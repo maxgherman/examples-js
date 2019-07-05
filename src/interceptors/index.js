@@ -1,6 +1,8 @@
-const typeioc = require('typeioc');
-const Addons = require('typeioc/addons');
-const Interceptors = Addons.Interceptors;
+const {
+  builder: createBuilder,
+  interceptor: createInterceptor,
+  callInfo
+} = require('typeioc');
 
 class CalcAdd {
     get a() {
@@ -24,14 +26,14 @@ class CalcAdd {
     }
 }
 
-const interceptor = Interceptors.create();
+const interceptor = createInterceptor();
 
 const calcAddIntercepted = interceptor
 .intercept(new CalcAdd(), [{
   method: 'a',
 
   // intercept 'a' getter
-  type: Interceptors.CallInfoType.Getter,
+  type: callInfo.getter,
 
   // invoke getter in the context of original object
   wrapper: (callInfo) => callInfo.get() + callInfo.source.b
@@ -42,7 +44,7 @@ const calcAddIntercepted = interceptor
   wrapper: (callInfo) => callInfo.invoke()
 }]);
 
-const builder = typeioc.createBuilder();
+const builder = createBuilder();
 
 builder.register(CalcAdd)
 .as(() => calcAddIntercepted);

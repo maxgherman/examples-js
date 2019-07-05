@@ -1,6 +1,6 @@
 const typeioc = require('typeioc');
 
-const builder = typeioc.createBuilder();
+const builder = typeioc.builder();
 
 builder.register('F')
 .as((c, h, n) => {
