@@ -5,9 +5,9 @@
     "test": "tap --no-coverage src/**/*.test.js"
   },
   "dependencies": {
-    "typeioc": "^3.0.2"
+    "typeioc": "^3.0.3"
   },
   "devDependencies": {
-    "tap": "14.10.5"
+    "tap": "14.10.6"
   }
 }
